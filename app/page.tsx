@@ -31,7 +31,7 @@ const heroData = [
     height: 500,
     image: "/images/van.png",
     cta: "What we do",
-    scrollId: "Our Work"
+    scrollId: "Our Work",
   },
 ];
 const cardText = [
@@ -88,7 +88,8 @@ const workCard = [
     orders within the same day
     `,
     img: "/images/airplane-and-packages.png",
-    style: "md:bottom-[-100px] md:left-[-60px] bottom-[-90px] right-[-35px] max-md:w-[200px]",
+    style:
+      "md:bottom-[-100px] md:left-[-60px] bottom-[-90px] right-[-35px] max-md:w-[200px]",
     width: 300,
     height: 300,
   },
