@@ -274,7 +274,6 @@ export default function Component() {
         <div className="w-[108rem] max-w-full mx-auto pb-[3rem]">
           <Typography
             as="h2"
-            size="large"
             theme="primary"
             className="text-center font-semibold"
           >
