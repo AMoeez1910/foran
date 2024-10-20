@@ -11,7 +11,7 @@ export default function Footer() {
   ];
   return (
     <footer className="bg-primary text-primary-foreground">
-      <div className="container mx-auto px-4 py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
             <Image
@@ -21,7 +21,7 @@ export default function Footer() {
               alt="Logo"
             />
           </div>
-          <div className="flex items-center gap-10 mx-12">
+          <div className="flex items-center gap-10">
             {navItems.map((item) => (
               <a
                 key={item.name}
@@ -36,8 +36,8 @@ export default function Footer() {
             ))}
           </div>
         </div>
-        <div className="mt-8 lg:mx-12 flex lg:flex-row flex-col max-md:gap-4 justify-between">
-          <div className="flex space-x-6">
+        <div className="mt-8 flex lg:flex-row flex-col max-md:gap-4 justify-between">
+          <div className="flex space-x-6 mx-12">
             <Link
               href={"https://www.linkedin.com/company/forun_cs/"}
               className="

@@ -62,7 +62,7 @@ const workCard = [
     accurately and on time`,
     img: "/images/package.png",
     style:
-      "md:bottom-[-35px] max-md:w-[100px] md:right-[-60px] top-[-50px] left-[-20px]",
+      "md:bottom-[-35px] max-md:w-[100px] md:right-[-60px] max-md:top-[-50px] max-md:left-[-20px]",
     width: 150,
     height: 150,
   },
@@ -75,7 +75,7 @@ const workCard = [
     `,
     img: "/images/delivery-truck.png",
     style:
-      "md:top-[-80px] max-md:w-[150px] md:right-[-60px] bottom-[-50px] left-[-20px]",
+      "md:top-[-80px] max-md:w-[150px] md:right-[-60px] max-md:bottom-[-50px] max-md:left-[-20px]",
     width: 200,
     height: 180,
   },
@@ -89,7 +89,7 @@ const workCard = [
     `,
     img: "/images/airplane-and-packages.png",
     style:
-      "md:bottom-[-100px] md:left-[-60px] bottom-[-90px] right-[-35px] max-md:w-[200px]",
+      "md:bottom-[-100px] md:left-[-60px] bottom-[-90px] max-md:right-[-35px] max-md:w-[200px]",
     width: 300,
     height: 300,
   },
