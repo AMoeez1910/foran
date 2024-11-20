@@ -26,7 +26,7 @@ const CardHeader: React.FC<CardHeaderProps> = ({
         "text-center mx-auto",
         shrinkSizeOnMobile
           ? "sm:text-[1.5rem] sm:leading-[2rem] text-[1.25rem] leading-[1.875rem]"
-          : "text-[1.3rem] leading-[1.875rem] sm:text-[1.4rem] sm:leading-[1.875rem] md:text-[1.6rem] md:leading-[1.75rem] 2xl:text-[2rem] 2xl:leading-[2.25rem]"
+          : "text-[1.5rem] leading-[1.875rem] sm:text-[1.4rem] sm:leading-[1.875rem] md:text-[1.75rem] md:leading-[1.875rem] 2xl:text-[2.5rem] 2xl:leading-[2.25rem]"
       )}
       {...props}
     >

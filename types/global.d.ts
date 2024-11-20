@@ -12,4 +12,16 @@ declare global {
     page?: string;
     scrollId?: string;
   }
+  interface CarouselItem {
+    titleTop?: string;
+    titleBottom?: string;
+    titleTopStyle?: string;
+    imageTopStyles?: string;
+    imageTop: string;
+    imageCenter?: string;
+    image: string;
+    width: number;
+    height: number;
+  }
 }
+

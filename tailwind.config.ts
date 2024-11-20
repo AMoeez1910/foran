@@ -9,6 +9,10 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        handyRegular: "var(--font-handy-casual-regular)",
+        handyOblique: "var(--font-handy-casual-oblique)",
+      },
       colors: {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",

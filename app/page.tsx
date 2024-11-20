@@ -1,7 +1,6 @@
 "use client";
 import Card from "@/components/card";
 import Typography from "@/components/typography";
-import { Button } from "@/components/ui/button";
 import {
   Carousel,
   CarouselApi,
@@ -12,26 +11,23 @@ import Autoplay from "embla-carousel-autoplay";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-const heroData = [
+const heroData: CarouselItem[] = [
   {
-    titleTop: "Delivery you can trust ",
-    titleBottom: "“We Got This”",
-    description: "e-commerce logistics and last-mile delivery specialists",
-    image: "/images/courier.png",
-    cta: "See Locations",
+    titleTop: "The Last Mile, Perfected",
+    titleBottom: `fullfilling your logistics, forun <br/><span class="text-[#afc1d0]">nation wide</span>`,
+    imageTop: "/images/logo.png",
+    image: "/images/carousel-1.png",
     width: 500,
-    height: 300,
-    scrollId: "locations",
+    height: 500,
   },
   {
-    titleTop: "Fast and reliable delivery",
-    titleBottom: "services",
-    description: "We deliver your packages on time and in perfect condition",
-    width: 600,
+    titleBottom: "empowering small businesses with COD",
+    imageTop: "/images/logo.png",
+    imageTopStyles: "relative top-[70px]",
+    imageCenter: "/images/carousel-2-center.png",
+    width: 400,
     height: 500,
-    image: "/images/van.png",
-    cta: "What we do",
-    scrollId: "Our Work",
+    image: "/images/carousel-2.png",
   },
 ];
 const cardText = [
@@ -118,7 +114,7 @@ export default function Component() {
         setApi={setApi}
         plugins={[
           Autoplay({
-            delay: 10000000,
+            delay: 1224000,
             stopOnInteraction: false,
           }),
         ]}
@@ -130,44 +126,54 @@ export default function Component() {
         <CarouselContent>
           {heroData.map((hero, index) => (
             <CarouselItem key={index}>
-              <div className=" w-[108rem] max-w-full h-full  mx-auto bg-[#0497CE]">
-                <div className="flex flex-col lg:flex-row lg:justify-between h-full lg:h-[600px] overflow-hidden relative max-lg:ml-[1rem] ">
-                  <div className="flex justify-center">
+              <div className="max-w-full min-h-[600px] h-full  mx-auto bg-primary ">
+                <div className="flex mx-auto w-[108rem] max-w-full flex-col-reverse justify-evenly md:flex-row md:justify-between h-full p-4 pl-6 sm:p-6 sm:pl-8 lg:p-8 lg:pl-12 overflow-hidden relative max-lg:ml-[1rem] ">
+                  <div className="flex items-center md:w-1/3">
+                    <div className="text-white w-full flex flex-col gap-2">
+                      <Image
+                        src={hero.imageTop}
+                        alt={hero.titleTop || "heroImage"}
+                        width={120}
+                        height={120}
+                        className={hero.imageTopStyles}
+                        objectFit="contain"
+                        priority
+                      />
+                      <Typography
+                        as={"h1"}
+                        className="text-4xl font-bold mb-4 font-handyRegular"
+                      >
+                        {hero.titleTop}
+                      </Typography>
+                      {hero.imageCenter && (
+                        <Image
+                          src={hero.imageCenter}
+                          alt={hero.titleTop || "heroImage"}
+                          width={400}
+                          height={160}
+                          objectFit="contain"
+                          priority
+                        />
+                      )}
+                      <Typography
+                        as={"h2"}
+                        className="text-xl font-handyRegular font-bold mb-4"
+                        dangerouslySetInnerHTML={{
+                          __html: hero.titleBottom || "",
+                        }}
+                      />
+                    </div>
+                  </div>
+                  <div className="flex justify-center ">
                     <Image
                       src={hero.image}
                       alt={hero.titleTop || "heroImage"}
                       width={hero.width}
                       height={hero.height}
-                      className="max-lg:w-full"
+                      className="sm:max-h-[550px]"
                       objectFit="cover"
                       priority
                     />
-                  </div>
-                  <div className="flex items-center justify-center">
-                    <div className="text-white text-center p-4">
-                      <Typography as={"h2"} className="text-4xl font-bold mb-4">
-                        {hero.titleTop}
-                      </Typography>
-                      <Typography as={"h2"} className="text-4xl font-bold mb-4">
-                        {hero.titleBottom}
-                      </Typography>
-                      <p className="text-xl mb-6">{hero.description}</p>
-                      <Button
-                        variant={"secondary"}
-                        size={"lg"}
-                        className="bg-primary text-lg text-primary-foreground hover:text-primary"
-                        onClick={() => {
-                          if (hero.scrollId) {
-                            const element = document.getElementById(
-                              hero.scrollId
-                            );
-                            element?.scrollIntoView({ behavior: "smooth" });
-                          }
-                        }}
-                      >
-                        {hero.cta}
-                      </Button>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -246,13 +252,13 @@ export default function Component() {
                 <Card
                   key={idx}
                   variant="work"
-                  className="md:w-auto lg:h-[380px] max-md:w-full bg-[#0497CE]"
+                  className="md:w-auto lg:h-[380px] max-md:w-full bg-[#1c3f60]"
                   cardInfo={card}
                   header={
-                    <Card.Header className="max-w-full whitespace-pre-line text-center mx-auto text-primary-foreground" />
+                    <Card.Header className="max-w-full whitespace-pre-line tracking-wide text-center mx-auto text-primary-foreground font-handyRegular" />
                   }
                   body={
-                    <Card.Body className="text-center sm:text-[1.3rem] leading-[2rem] whitespace-pre-line text-primary-foreground mt-[2rem]" />
+                    <Card.Body className="text-center font-handyOblique tracking-wide sm:text-[1.75rem] leading-[2rem] whitespace-pre-line text-primary-foreground mt-[2rem]" />
                   }
                 />
                 {card.img && (

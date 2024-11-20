@@ -37,7 +37,7 @@ export default function Navbar() {
   return (
     <nav
       className={`sticky top-0 z-50 transition-colors duration-300 ${
-        scrolled ? "bg-primary" : "bg-[#0497CE]"
+        scrolled ? "bg-primary" : "bg-[#1c3f60]"
       } text-primary-foreground`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -47,8 +47,8 @@ export default function Navbar() {
               <Image
                 src={"/images/logo.png"}
                 alt="logo"
-                width={150}
-                height={150}
+                width={80}
+                height={80}
               />
             </a>
           </div>
@@ -68,11 +68,11 @@ export default function Navbar() {
                     <Link
                       key={item.name}
                       href={item.href}
-                      className="py-2 text-white rounded-md text-md font-medium relative group w-fit"
+                      className="py-1 text-white rounded-md font-handyOblique text-lg relative group w-fit"
                     >
                       {item.name}
                       <span
-                        className={`absolute left-0 bottom-0 h-[2px] bg-white transition-all duration-300 ease-out w-0 group-hover:w-full `}
+                        className={`absolute left-0 bottom-0 h-[2px]  bg-white transition-all duration-300 ease-out w-0 group-hover:w-full `}
                       />
                     </Link>
                   ))}
@@ -87,7 +87,7 @@ export default function Navbar() {
               <a
                 key={item.name}
                 href={item.href}
-                className="py-2 rounded-md text-md font-medium relative group w-fit"
+                className="py-1 rounded-md text-lg font-handyOblique relative group w-fit"
               >
                 {item.name}
                 <span

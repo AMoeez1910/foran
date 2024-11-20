@@ -11,13 +11,13 @@ export default function Footer() {
   ];
   return (
     <footer className="bg-primary text-primary-foreground">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
             <Image
               src={"/images/logo.png"}
-              width={200}
-              height={200}
+              width={150}
+              height={150}
               alt="Logo"
             />
           </div>
@@ -26,7 +26,7 @@ export default function Footer() {
               <a
                 key={item.name}
                 href={item.href}
-                className="py-2 rounded-md text-md font-medium relative group w-fit"
+                className="py-1 rounded-md text-lg font-handyOblique relative group w-fit"
               >
                 {item.name}
                 <span
@@ -36,8 +36,8 @@ export default function Footer() {
             ))}
           </div>
         </div>
-        <div className="mt-8 flex lg:flex-row flex-col max-md:gap-4 justify-between">
-          <div className="flex space-x-6 mx-12">
+        <div className="mt-8 flex lg:flex-row flex-col text-sm max-md:gap-4 justify-between items-center">
+          <div className="flex space-x-6">
             <Link
               href={"https://www.linkedin.com/company/forun_cs/"}
               className="
