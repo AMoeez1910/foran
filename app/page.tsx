@@ -280,10 +280,14 @@ export default function Component() {
             Our Locations
           </Typography>
         </div>
-        <div className="map-container bg-slate-100">
-          <iframe
-            src="https://www.google.com/maps/d/embed?mid=1gJIX1auoN7WS2bgDztDhbs6i7Ak5rFQ&ehbc=2E312F"
-            className="map-iframe"
+        <div className="bg-white">
+          <Image
+            src="/video/map-video.gif"
+            alt="Map GIF"
+            className="bg-white h-full w-full max-w-[90rem] mx-auto"
+            layout="responsive"
+            width={1080}
+            height={720}
           />
         </div>
       </div>
