@@ -222,7 +222,7 @@ export default function Component() {
           <Typography
             as="h2"
             theme="primary"
-            className="text-center font-semibold"
+            className="text-center font-handyOblique font-semibold"
           >
             Forun Delivery Solutions
           </Typography>
@@ -249,24 +249,24 @@ export default function Component() {
                     theme={"primary"}
                   />
                 }
-                body={<Card.Body className="text-center font-semibold" />}
+                body={<Card.Body className="text-center font-handyRegular font-semibold" />}
               />
             ))}
           </div>
         </div>
       </div>
-      {/* Our Work */}
+      {/* Solutions we Offer */}
       <div
         className="px-[1rem] py-[2rem] md:p-[2.5rem] 2xl:px-[4rem] 2xl:py-[3.5rem]"
-        id="Our Work"
+        id="Solutions we Offer"
       >
         <div className="w-[108rem] max-w-full mx-auto">
           <Typography
             as="h2"
             theme="primary"
-            className="text-center font-semibold"
+            className="text-center font-semibold font-handyOblique"
           >
-            Our Work
+            Solutions we Offer
           </Typography>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-[5rem] pt-[1.5rem] sm:pt-[3rem]">
             {workCard.map((card, idx) => (
