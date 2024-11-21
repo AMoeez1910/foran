@@ -1,14 +1,29 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import { InstagramLogoIcon, LinkedInLogoIcon } from "@radix-ui/react-icons";
 
 export default function Footer() {
   const navItems = [
-    { name: "Home", href: "#" },
-    { name: "About", href: "#" },
-    { name: "Services", href: "#" },
-    { name: "Contact", href: "#" },
+    { name: "Home", scrollId: "Carousel" },
+    { name: "Solutions", scrollId: "Why Choose Us" },
+    { name: "Services", scrollId: "Solutions we Offer" },
+    { name: "Contact", scrollId: "#" },
   ];
+  const handleScroll = (scrollId: string) => {
+    if (scrollId) {
+      const element = document.getElementById(scrollId);
+      if (element) {
+      const offset = 20;
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+      const offsetPosition = elementPosition - offset;
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+      }
+    }
+  };
   return (
     <footer className="bg-primary text-primary-foreground">
       <div className="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
@@ -23,16 +38,18 @@ export default function Footer() {
           </div>
           <div className="flex items-center gap-10">
             {navItems.map((item) => (
-              <a
+              <div
                 key={item.name}
-                href={item.href}
-                className="py-1 rounded-md text-lg font-handyOblique relative group w-fit"
+                onClick={() => {
+                  handleScroll(item.scrollId);
+                }}
+                className="py-1 rounded-md text-lg font-handyOblique relative group w-fit cursor-pointer"
               >
                 {item.name}
                 <span
                   className={`absolute left-0 bottom-0 h-[2px] bg-white transition-all duration-300 ease-out w-0 group-hover:w-full `}
                 />
-              </a>
+              </div>
             ))}
           </div>
         </div>

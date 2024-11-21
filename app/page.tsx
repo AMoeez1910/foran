@@ -133,7 +133,7 @@ export default function Component() {
         setApi={setApi}
         plugins={[
           Autoplay({
-            delay: 1224000,
+            delay: 4000,
             stopOnInteraction: false,
           }),
         ]}
@@ -141,6 +141,7 @@ export default function Component() {
           loop: true,
         }}
         className="w-full"
+        id="Carousel"
       >
         <CarouselContent>
           {heroData.map((hero, index) => (
@@ -216,15 +217,18 @@ export default function Component() {
           ))}
         </div>
       </Carousel>
-      {/* Forun Delivery Solutions  */}
-      <div className="px-[1rem] py-[2rem] md:p-[2.5rem] 2xl:px-[4rem] 2xl:py-[3.5rem]">
+      {/* Why Choose Us  */}
+      <div
+        className="px-[1rem] pt-[2rem] md:p-[2.5rem] md:pb-0 2xl:px-[4rem] 2xl:pt-[3.5rem]"
+        id="Why Choose Us"
+      >
         <div className="w-[108rem] max-w-full mx-auto">
           <Typography
             as="h2"
             theme="primary"
             className="text-center font-handyOblique font-semibold"
           >
-            Forun Delivery Solutions
+            Why Choose Us
           </Typography>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 justify-center ">
             {cardText.map((card, idx) => (
@@ -249,7 +253,9 @@ export default function Component() {
                     theme={"primary"}
                   />
                 }
-                body={<Card.Body className="text-center font-handyRegular font-semibold" />}
+                body={
+                  <Card.Body className="text-center font-handyRegular font-semibold" />
+                }
               />
             ))}
           </div>
@@ -303,7 +309,7 @@ export default function Component() {
           <Typography
             as="h2"
             theme="primary"
-            className="text-center font-semibold"
+            className="text-center font-handyOblique font-semibold"
           >
             Our Locations
           </Typography>

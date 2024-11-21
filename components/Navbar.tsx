@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { Menu, X } from "lucide-react";
 import {
   Drawer,
@@ -12,13 +12,27 @@ import { useEffect, useState } from "react";
 
 export default function Navbar() {
   const navItems = [
-    { name: "Home", href: "#" },
-    { name: "About", href: "#" },
-    { name: "Services", href: "#" },
-    { name: "Contact", href: "#" },
+    { name: "Home", scrollId: "Carousel" },
+    { name: "Solutions", scrollId: "Why Choose Us" },
+    { name: "Services", scrollId: "Solutions we Offer" },
+    { name: "Contact", scrollId: "#" },
   ];
   const [scrolled, setScrolled] = useState(false);
-
+  const handleScroll = (scrollId: string) => {
+    if (scrollId) {
+      const element = document.getElementById(scrollId);
+      if (element) {
+        const offset = 40;
+        const elementPosition =
+          element.getBoundingClientRect().top + window.pageYOffset;
+        const offsetPosition = elementPosition - offset;
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth",
+        });
+      }
+    }
+  };
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
@@ -65,16 +79,18 @@ export default function Navbar() {
                 </DrawerClose>
                 <div className="flex flex-col items-start space-y-4 p-4">
                   {navItems.map((item) => (
-                    <Link
+                    <div
                       key={item.name}
-                      href={item.href}
-                      className="py-1 text-white rounded-md font-handyOblique text-lg relative group w-fit"
+                      onClick={() => {
+                        handleScroll(item.scrollId);
+                      }}
+                      className="py-1 text-white rounded-md font-handyOblique text-lg relative group w-fit cursor-pointer"
                     >
                       {item.name}
                       <span
                         className={`absolute left-0 bottom-0 h-[2px]  bg-white transition-all duration-300 ease-out w-0 group-hover:w-full `}
                       />
-                    </Link>
+                    </div>
                   ))}
                 </div>
               </DrawerContent>
@@ -84,16 +100,18 @@ export default function Navbar() {
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center gap-10">
             {navItems.map((item) => (
-              <a
+              <div
                 key={item.name}
-                href={item.href}
-                className="py-1 rounded-md text-lg font-handyOblique relative group w-fit"
+                onClick={() => {
+                  handleScroll(item.scrollId);
+                }}
+                className="py-1 rounded-md text-lg font-handyOblique relative group w-fit cursor-pointer"
               >
                 {item.name}
                 <span
                   className={`absolute left-0 bottom-0 h-[2px] bg-white transition-all duration-300 ease-out w-0 group-hover:w-full`}
                 />
-              </a>
+              </div>
             ))}
           </div>
         </div>
