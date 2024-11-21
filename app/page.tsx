@@ -23,7 +23,7 @@ const heroData: CarouselItem[] = [
   {
     titleBottom: "empowering small businesses with COD",
     imageTop: "/images/logo.png",
-    imageTopStyles: "relative top-[70px]",
+    imageTopStyles: "relative sm:top-[70px] top-[50px]",
     imageCenter: "/images/carousel-2-center.png",
     width: 400,
     height: 500,
@@ -126,10 +126,10 @@ export default function Component() {
         <CarouselContent>
           {heroData.map((hero, index) => (
             <CarouselItem key={index}>
-              <div className="max-w-full min-h-[600px] h-full  mx-auto bg-primary ">
-                <div className="flex mx-auto w-[108rem] max-w-full flex-col-reverse justify-evenly md:flex-row md:justify-between h-full p-4 pl-6 sm:p-6 sm:pl-8 lg:p-8 lg:pl-12 overflow-hidden relative max-lg:ml-[1rem] ">
+              <div className="max-w-full h-full  mx-auto bg-primary ">
+                <div className="flex mx-auto w-[108rem] max-w-full flex-col-reverse justify-between md:flex-row md:justify-between h-full p-4 pl-6 sm:p-6 sm:pl-8 lg:p-8 lg:pl-12 overflow-hidden relative max-lg:ml-[1rem] ">
                   <div className="flex items-center md:w-1/3">
-                    <div className="text-white w-full flex flex-col gap-2">
+                    <div className="text-white w-full flex flex-col sm:gap-2">
                       <Image
                         src={hero.imageTop}
                         alt={hero.titleTop || "heroImage"}
@@ -151,6 +151,7 @@ export default function Component() {
                           alt={hero.titleTop || "heroImage"}
                           width={400}
                           height={160}
+                          className="max-sm:max-w-[200px]"
                           objectFit="contain"
                           priority
                         />
@@ -170,7 +171,7 @@ export default function Component() {
                       alt={hero.titleTop || "heroImage"}
                       width={hero.width}
                       height={hero.height}
-                      className="sm:max-h-[550px]"
+                      className="sm:max-h-[550px] max-h-[250px] max-sm:w-auto"
                       objectFit="cover"
                       priority
                     />
