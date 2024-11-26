@@ -1,5 +1,6 @@
 "use client";
 import Card from "@/components/card";
+import CompaniesMarquee from "@/components/marquee";
 import Typography from "@/components/typography";
 import {
   Carousel,
@@ -69,44 +70,34 @@ const cardText = [
 ];
 const workCard = [
   {
-    titleTop: "Fulfillment ",
-    titleBottom: "and Warehousing",
-    description: `Our facilities worldwide 
-    can store, stock, label, fulfill, 
-    and barcode several orders 
-    accurately and on time`,
-    img: "/images/package.png",
-    style:
-      "md:bottom-[-35px] max-md:w-[100px] md:right-[-60px] max-md:top-[-50px] max-md:left-[-20px]",
-    width: 150,
-    height: 150,
+    titleTop: "easy payment",
+    titleBottom: "solutions",
+    description: `enabling COD for small businesses, payments are cleared with 24 hrs`,
   },
   {
-    titleTop: "Last-Mile ",
-    titleBottom: "Delivery",
-    description: `Our last mile delivery 
-    service ensures that youorders 
-    on time and in perfect condition
+    titleTop: "60 mins",
+    titleBottom: "delivery",
+    description: `delivery anything, anywhere in just 60 mins
+    Isl / Rwp only
     `,
-    img: "/images/delivery-truck.png",
-    style:
-      "md:top-[-80px] max-md:w-[150px] md:right-[-60px] max-md:bottom-[-50px] max-md:left-[-20px]",
-    width: 200,
-    height: 180,
   },
   {
-    titleTop: "Same-Day ",
-    titleBottom: "Delivery",
-    description: `Our same
-    day delivery service is
-    designed to deliver your
-    orders within the same day
+    titleTop: "same day,",
+    titleBottom: "following day",
+    description: `need to send something urgently, schedule a same day or following day delivery
     `,
-    img: "/images/airplane-and-packages.png",
-    style:
-      "md:bottom-[-100px] md:left-[-60px] bottom-[-90px] max-md:right-[-35px] max-md:w-[200px]",
-    width: 300,
-    height: 300,
+  },
+  {
+    titleTop: "last mile",
+    titleBottom: "perfected",
+    description: `we pick up orders from our clients warehouse and deliver them to their customers
+    `,
+  },
+  {
+    titleTop: "last mile",
+    titleBottom: "perfected",
+    description: `we pick up orders from our clients warehouse and deliver them to their customers
+    `,
   },
 ];
 export default function Component() {
@@ -133,7 +124,7 @@ export default function Component() {
         setApi={setApi}
         plugins={[
           Autoplay({
-            delay: 4000,
+            delay: 412000,
             stopOnInteraction: false,
           }),
         ]}
@@ -147,7 +138,7 @@ export default function Component() {
           {heroData.map((hero, index) => (
             <CarouselItem key={index}>
               <div className="max-w-full h-full  mx-auto bg-primary ">
-                <div className="flex mx-auto max-w-7xl flex-col-reverse justify-between md:flex-row md:justify-between h-full p-4 sm:p-6 lg:p-8 lg:pl-12 overflow-hidden relative max-lg:ml-[1rem] ">
+                <div className="flex mx-auto max-w-7xl flex-col-reverse justify-between md:flex-row md:justify-between h-full p-4 sm:p-6 lg:p-8 lg:pl-[2.5rem] overflow-hidden relative max-lg:ml-[1rem] ">
                   <div className="flex items-center md:w-[50%]">
                     <div className="text-white w-full flex flex-col max-sm:items-center sm:gap-2">
                       <Image
@@ -217,12 +208,21 @@ export default function Component() {
           ))}
         </div>
       </Carousel>
+      {/* Comapnies we work with */}
+      <div
+        className="px-[1rem] py-[2rem] md:p-[2.5rem] 2xl:px-[4rem] bg-[#d9d9d9]"
+        id="Comapnies we work with"
+      >
+        <div className="max-w-7xl mx-auto">
+          <CompaniesMarquee />
+        </div>
+      </div>
       {/* Why Choose Us  */}
       <div
         className="px-[1rem] pt-[2rem] md:p-[2.5rem] md:pb-0 2xl:px-[4rem] 2xl:pt-[3.5rem]"
         id="Why Choose Us"
       >
-        <div className="w-[108rem] max-w-full mx-auto">
+        <div className="max-w-7xl mx-auto">
           <Typography
             as="h2"
             theme="primary"
@@ -230,7 +230,7 @@ export default function Component() {
           >
             Why Choose Us
           </Typography>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 justify-center ">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 md:gap-4 justify-center ">
             {cardText.map((card, idx) => (
               <Card
                 key={idx}
@@ -266,7 +266,7 @@ export default function Component() {
         className="px-[1rem] py-[2rem] md:p-[2.5rem] 2xl:px-[4rem] 2xl:py-[3.5rem]"
         id="Solutions we Offer"
       >
-        <div className="w-[108rem] max-w-full mx-auto">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Typography
             as="h2"
             theme="primary"
@@ -280,7 +280,7 @@ export default function Component() {
                 <Card
                   key={idx}
                   variant="work"
-                  className="md:w-auto lg:h-[380px] max-md:w-full bg-[#1c3f60]"
+                  className="md:w-auto max-md:w-full bg-[#1c3f60] sm:p-8 lg:p-12 h-full"
                   cardInfo={card}
                   header={
                     <Card.Header className="max-w-full whitespace-pre-line tracking-wide text-center mx-auto text-primary-foreground font-handyRegular" />
@@ -289,23 +289,17 @@ export default function Component() {
                     <Card.Body className="text-center font-handyOblique tracking-wide sm:text-[1.75rem] leading-[2rem] whitespace-pre-line text-primary-foreground mt-[2rem]" />
                   }
                 />
-                {card.img && (
-                  <Image
-                    src={card.img}
-                    height={card.width}
-                    width={card.height}
-                    alt="card-image"
-                    className={`absolute z-10 ${card.style}`}
-                  />
-                )}
               </div>
             ))}
           </div>
         </div>
       </div>
       {/* Locations */}
-      <div className="pt-[2rem] md:pt-[2.5rem] 2xl:pt-[3.5rem]" id="locations">
-        <div className="w-[108rem] max-w-full mx-auto pb-[3rem]">
+      <div
+        className="pt-[2rem] md:pt-[2.5rem] 2xl:pt-[3.5rem] bg-[#fcfcfc]"
+        id="locations"
+      >
+        <div className="max-w-7xl mx-auto pb-[3rem]">
           <Typography
             as="h2"
             theme="primary"
@@ -314,16 +308,14 @@ export default function Component() {
             Our Locations
           </Typography>
         </div>
-        <div className="bg-white">
-          <Image
-            src="/video/map-video.gif"
-            alt="Map GIF"
-            className="bg-white h-full w-full max-w-[90rem] mx-auto"
-            layout="responsive"
-            width={1080}
-            height={720}
-          />
-        </div>
+        <Image
+          src="/video/map-video.gif"
+          alt="Map GIF"
+          className="h-full w-full max-w-7xl mx-auto"
+          layout="responsive"
+          width={1080}
+          height={720}
+        />
       </div>
     </div>
   );

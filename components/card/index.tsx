@@ -41,8 +41,7 @@ const Card: React.FC<CardProps> = forwardRef<HTMLDivElement, CardProps>(
               {image}
               {header}
               {body}
-              <div className="border-[3px] w-[107%] sm:w-[105%] md:w-[112%] h-[120%] border-primary absolute top-[-20px] left-[0px] rounded-[0.5rem]" />
-            </div>
+              </div>
           </div>
         </CardContext.Provider>
       );

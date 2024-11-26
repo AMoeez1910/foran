@@ -31,6 +31,7 @@ export default function Navbar() {
           behavior: "smooth",
         });
       }
+      
     }
   };
   useEffect(() => {
