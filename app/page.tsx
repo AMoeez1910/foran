@@ -124,7 +124,7 @@ export default function Component() {
         setApi={setApi}
         plugins={[
           Autoplay({
-            delay: 412000,
+            delay: 114000,
             stopOnInteraction: false,
           }),
         ]}
@@ -138,7 +138,7 @@ export default function Component() {
           {heroData.map((hero, index) => (
             <CarouselItem key={index}>
               <div className="max-w-full h-full  mx-auto bg-primary ">
-                <div className="flex mx-auto max-w-7xl flex-col-reverse justify-between md:flex-row md:justify-between h-full p-4 sm:p-6 lg:p-8 lg:pl-[2.5rem] overflow-hidden relative max-lg:ml-[1rem] ">
+                <div className="flex mx-auto max-w-7xl flex-col-reverse gap-[2rem] md:flex-row md:gap-[8rem] h-full p-4 sm:p-6 lg:p-8 lg:pl-[2.5rem] overflow-hidden relative max-lg:ml-[1rem] ">
                   <div className="flex items-center md:w-[50%]">
                     <div className="text-white w-full flex flex-col max-sm:items-center sm:gap-2">
                       <Image
@@ -164,7 +164,7 @@ export default function Component() {
                           alt={hero.titleTop || "heroImage"}
                           width={400}
                           height={160}
-                          className="max-sm:max-w-[170px] my-2"
+                          className="max-sm:max-w-[170px] max-w-[300px] my-2"
                           objectFit="contain"
                           priority
                         />
@@ -178,13 +178,13 @@ export default function Component() {
                       />
                     </div>
                   </div>
-                  <div className="flex justify-center ">
+                  <div className="flex justify-center items-center ">
                     <Image
                       src={hero.image}
                       alt={hero.titleTop || "heroImage"}
                       width={hero.width}
                       height={hero.height}
-                      className="sm:max-h-[550px] max-h-[250px] max-sm:w-auto"
+                      className="sm:max-h-[300px] max-w-[300px] max-h-[250px] max-sm:w-auto"
                       objectFit="cover"
                       priority
                     />
@@ -210,7 +210,7 @@ export default function Component() {
       </Carousel>
       {/* Comapnies we work with */}
       <div
-        className="px-[1rem] py-[2rem] md:p-[2.5rem] 2xl:px-[4rem] bg-[#d9d9d9]"
+        className="px-[1rem] md:p-[2.5rem] md:py-[0] 2xl:px-[4rem] bg-[#507CA5]"
         id="Comapnies we work with"
       >
         <div className="max-w-7xl mx-auto">
@@ -315,6 +315,7 @@ export default function Component() {
           layout="responsive"
           width={1080}
           height={720}
+          unoptimized
         />
       </div>
     </div>

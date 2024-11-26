@@ -73,6 +73,7 @@ export default function CompaniesMarquee() {
                 width={300}
                 height={100}
                 alt={"Company Logo"}
+                className="object-contain min-w-[120px]"
                 priority={true}
               />
             </div>
