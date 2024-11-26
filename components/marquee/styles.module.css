@@ -29,8 +29,3 @@
         height: 62px;
     }
 }
-@media (min-width: 1650px) {
-    .embla__slide {
-        height: 100px;
-    }
-}
