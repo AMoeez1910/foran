@@ -94,9 +94,9 @@ const workCard = [
     `,
   },
   {
-    titleTop: "last mile",
-    titleBottom: "perfected",
-    description: `we pick up orders from our clients warehouse and deliver them to their customers
+    titleTop: "sustainability delivered",
+    titleBottom: "instantly",
+    description: `visit forun.store to buy / sell products
     `,
   },
 ];
@@ -280,7 +280,7 @@ export default function Component() {
                 <Card
                   key={idx}
                   variant="work"
-                  className="md:w-auto max-md:w-full bg-[#1c3f60] sm:p-8 lg:p-12 h-full"
+                  className="md:w-auto max-md:w-full bg-[#1c3f60] sm:p-8 xl:p-12 h-full"
                   cardInfo={card}
                   header={
                     <Card.Header className="max-w-full whitespace-pre-line tracking-wide text-center mx-auto text-primary-foreground font-handyRegular" />
