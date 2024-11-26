@@ -124,7 +124,7 @@ export default function Component() {
         setApi={setApi}
         plugins={[
           Autoplay({
-            delay: 114000,
+            delay: 4000,
             stopOnInteraction: false,
           }),
         ]}
