@@ -9,6 +9,8 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { Button } from "./ui/button";
+import Typography from "./typography";
 
 export default function Navbar() {
   const navItems = [
@@ -58,14 +60,14 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <a href="#" className="text-xl font-bold">
+            <Link href="/" className="text-xl font-bold">
               <Image
                 src={"/images/logo.png"}
                 alt="logo"
                 width={80}
                 height={80}
               />
-            </a>
+            </Link>
           </div>
 
           {/* Mobile Menu */}
@@ -114,6 +116,18 @@ export default function Navbar() {
                 />
               </div>
             ))}
+            <Link href="/book-a-delivery">
+              <Button
+                className={`h-auto  ${scrolled && "bg-[#1c3f60] hover:bg-[#25537e]"}`}
+              >
+                <Typography
+                  as={"h4"}
+                  className="text-sm font-handyRegular font-bold"
+                >
+                  Deliver Now
+                </Typography>
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

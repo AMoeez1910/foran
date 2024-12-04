@@ -23,5 +23,17 @@ declare global {
     width: number;
     height: number;
   }
+  interface GeoApiProps {
+    address_line1: string;
+    address_line2: string;
+    formatted: string;
+    lat: number;
+    lon: number;
+  }
+  interface GeoApiResultProps {
+    query: {
+      text: string;
+    };
+    results: GeoApiProps[];
+  }
 }
-

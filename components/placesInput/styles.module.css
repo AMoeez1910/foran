@@ -1,0 +1,22 @@
+.input {
+  color: #848484;
+  font-size: 1.2rem;
+  font-style: normal;
+  font-family: var(--font-handy-casual-regular);
+  letter-spacing: 1px;
+  font-weight: 400;
+  line-height: 130%;
+  display: flex;
+  padding: 14px 24px;
+  align-items: flex-start;
+  gap: 10px;
+  border-radius: 12px;
+  border: 1px solid hsl(var(--primary));
+  background: #ffffff;
+  transition: border 0.3s ease;
+  outline: 0;
+}
+
+.input:focus {
+  outline: 2px solid #1c3f60;
+}
