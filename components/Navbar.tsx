@@ -95,6 +95,18 @@ export default function Navbar() {
                       />
                     </div>
                   ))}
+                  <Link href="/book-a-delivery">
+                    <Button
+                      className={`h-auto text-xl bg-[#25537e]`}
+                    >
+                      <Typography
+                        as={"h4"}
+                        className="text-sm font-handyRegular font-bold"
+                      >
+                        Deliver Now
+                      </Typography>
+                    </Button>
+                  </Link>
                 </div>
               </DrawerContent>
             </Drawer>

@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { Toaster } from "react-hot-toast";
 
 
 const HandyCasualRegular = localFont({
@@ -50,6 +51,7 @@ export default function RootLayout({
       <body
         className={`${HandyCasualRegular.variable} ${HandyCasualOblique.variable} antialiased`}
       >
+        <Toaster position="bottom-right" reverseOrder={false} />
         <Navbar />
         {children}
         <Footer />

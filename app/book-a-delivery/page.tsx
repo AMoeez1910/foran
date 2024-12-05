@@ -10,10 +10,12 @@ import { Button } from "@/components/ui/button";
 import styles from "./styles.module.css";
 import { PlacesInput } from "@/components/placesInput";
 import { calculateTotalCost } from "@/lib/utils";
+import toast from "react-hot-toast";
+import Link from "next/link";
 
 const pageData = {
   title: "Book your Delivery with Forun",
-  description: "switch to a healthier lifestyle with forun.store",
+  description: "switch to a healthier lifestyle with ",
   text: "coming soon.",
 };
 
@@ -27,6 +29,7 @@ const hero: CarouselItem = {
   image: "/images/carousel-2.png",
 };
 export default function FormPage() {
+  const [loading, setLoading] = useState(false);
   const formHook = useForm<orderFormSchemaType>({
     resolver: zodResolver(orderFormSchema),
   });
@@ -36,19 +39,25 @@ export default function FormPage() {
     control,
     formState: { errors },
   } = formHook;
-  const [loading, setLoading] = useState(false);
   const pickupLocation = useWatch({ control, name: "pickup.landmark" });
   const dropoffLocation = useWatch({ control, name: "dropoff.landmark" });
   const [totalCost, setTotalCost] = useState<string | undefined>(undefined);
   useEffect(() => {
     if (pickupLocation && dropoffLocation) {
       (async () => {
-        const totalCost = await calculateTotalCost({
-          pickupLocation,
-          dropoffLocation,
-        });
-        formHook.setValue("total_delivery_cost", totalCost?.toString() || "");
-        setTotalCost("Rs "+totalCost?.toString());
+        try {
+          setLoading(true);
+          const totalCost = await calculateTotalCost({
+            pickupLocation,
+            dropoffLocation,
+          });
+          formHook.setValue("total_delivery_cost", totalCost?.toString() || "");
+          setTotalCost("Rs " + totalCost?.toString());
+        } catch (error) {
+          console.error(error);
+        } finally {
+          setLoading(false);
+        }
       })();
     }
   }, [pickupLocation, dropoffLocation]);
@@ -70,15 +79,13 @@ export default function FormPage() {
       const responseData = await response.json();
 
       if (response.ok) {
-        alert("Delivery booked successfully");
+        toast.success("Delivery booked successfully");
       } else {
-        alert(
-          `Failed to book delivery: ${responseData.message || "Unknown error"}`
-        );
+        toast.error(responseData.message);
       }
     } catch (error) {
       console.error(error);
-      alert("An error occurred while booking the delivery.");
+      toast.error("Something went wrong");
     } finally {
       setLoading(false);
     }
@@ -139,9 +146,12 @@ export default function FormPage() {
           </Typography>
           <Typography
             as={"h2"}
-            className="text-md max-md:text-lg font-handyRegular font-bold mb-4 max-md:hidden"
+            className="text-md  max-md:text-lg font-handyRegular font-bold mb-4 max-md:hidden"
           >
             {pageData.description}
+            <Link href={"https://www.forun.store/"} className="text-gray-500">
+              forun.store
+            </Link>
           </Typography>
           <Typography
             as={"h4"}
@@ -325,7 +335,7 @@ export default function FormPage() {
               <div className="relative flex flex-col gap-1">
                 <label
                   htmlFor="totalDeliveryCost"
-                  className="text-lg font-handyRegular font-medium text-gray-700"
+                  className="text-2xl font-handyRegular font-medium text-gray-700"
                 >
                   Total Delivery Cost
                 </label>
