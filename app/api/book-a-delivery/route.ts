@@ -31,6 +31,7 @@ const getCurrentWeekSheetName = (): string => {
 };
 
 const sendEmailNotification = async (
+  orderId:string,
   pickup: SheetForm["pickup"],
   dropoff: SheetForm["dropoff"],
   total_delivery_cost: string
@@ -49,6 +50,7 @@ const sendEmailNotification = async (
     subject: "New Delivery Order Received",
     text: `
       New delivery order has been placed:
+      Order ID: ${orderId}
 
       Pickup Details:
       Name: ${pickup.name}
@@ -64,18 +66,17 @@ const sendEmailNotification = async (
 
       Total Delivery Cost: ${total_delivery_cost}
 
-      Date: ${new Date().toISOString()}
+      Date: ${new Date().toISOString().split("T")[0]}
     `,
   };
 
-  // Send the email
   return transporter.sendMail(mailOptions);
 };
 
 export const POST = async (req: Request) => {
   const { pickup, dropoff, total_delivery_cost } =
     (await req.json()) as SheetForm;
-
+  const orderId = Math.random().toString(36).substring(7);
   try {
     const auth = new google.auth.GoogleAuth({
       credentials: {
@@ -127,6 +128,7 @@ export const POST = async (req: Request) => {
       requestBody: {
         values: [
           [
+            orderId,
             pickup.name,
             pickup.phone_number,
             pickup.landmark.formatted,
@@ -136,17 +138,19 @@ export const POST = async (req: Request) => {
             dropoff.landmark.formatted,
             dropoff.address,
             total_delivery_cost,
-            new Date().toISOString(),
+            new Date().toISOString().split("T")[0],
           ],
         ],
       },
     });
 
     // Send email notification
-    await sendEmailNotification(pickup, dropoff, total_delivery_cost);
+    await sendEmailNotification(orderId,pickup, dropoff, total_delivery_cost);
 
     return NextResponse.json(
-      { message: "Data appended successfully and email sent." },
+      { message: "Data appended successfully and email sent.",
+      orderId: orderId
+       },
       { status: 200 }
     );
   } catch (error: any) {

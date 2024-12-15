@@ -38,7 +38,7 @@ export const PlacesInput = ({
     };
     if (debounceSearch && dropdown && search !== "") fetchData();
   }, [debounceSearch]);
-
+  console.log(search);
   return (
     <div className="relative">
       <input

@@ -11,31 +11,32 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Button } from "./ui/button";
 import Typography from "./typography";
+import { usePathname, useRouter } from "next/navigation";
+import { scrolltoHash } from "@/lib/utils";
 
 export default function Navbar() {
   const navItems = [
-    { name: "Home", scrollId: "Carousel" },
-    { name: "Solutions", scrollId: "Why Choose Us" },
-    { name: "Services", scrollId: "Solutions we Offer" },
-    { name: "Contact", scrollId: "#" },
+    { name: "Home", scrollId: "Carousel", page: "/" },
+    { name: "Solutions", scrollId: "Why Choose Us", page: "/" },
+    { name: "Services", scrollId: "Solutions we Offer", page: "/" },
   ];
+
   const [scrolled, setScrolled] = useState(false);
-  const handleScroll = (scrollId: string) => {
-    if (scrollId) {
-      const element = document.getElementById(scrollId);
-      if (element) {
-        const offset = 40;
-        const elementPosition =
-          element.getBoundingClientRect().top + window.pageYOffset;
-        const offsetPosition = elementPosition - offset;
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: "smooth",
-        });
-      }
-      
+  const pathname = usePathname();
+  const router = useRouter();
+  const handleScroll = async (scrollId: string, page: string) => {
+    if (page === pathname) {
+      if (scrollId) scrolltoHash(scrollId);
+    } else {
+      router.push(`${page}`);
+      if (scrollId) {
+      setTimeout(() => {
+        scrolltoHash(scrollId);
+      }, 300); 
+    }
     }
   };
+
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
@@ -51,6 +52,7 @@ export default function Navbar() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
   return (
     <nav
       className={`sticky top-0 z-50 transition-colors duration-300 ${
@@ -85,7 +87,7 @@ export default function Navbar() {
                     <div
                       key={item.name}
                       onClick={() => {
-                        handleScroll(item.scrollId);
+                        handleScroll(item.scrollId, item.page); // Call handleScroll here
                       }}
                       className="py-1 text-white rounded-md font-handyOblique text-lg relative group w-fit cursor-pointer"
                     >
@@ -96,9 +98,7 @@ export default function Navbar() {
                     </div>
                   ))}
                   <Link href="/book-a-delivery">
-                    <Button
-                      className={`h-auto text-xl bg-[#25537e]`}
-                    >
+                    <Button className={`h-auto text-xl bg-[#25537e]`}>
                       <Typography
                         as={"h4"}
                         className="text-sm font-handyRegular font-bold"
@@ -118,7 +118,7 @@ export default function Navbar() {
               <div
                 key={item.name}
                 onClick={() => {
-                  handleScroll(item.scrollId);
+                  handleScroll(item.scrollId, item.page); // Call handleScroll here
                 }}
                 className="py-1 rounded-md text-lg font-handyOblique relative group w-fit cursor-pointer"
               >

@@ -2,25 +2,28 @@
 import Image from "next/image";
 import Link from "next/link";
 import { InstagramLogoIcon, LinkedInLogoIcon } from "@radix-ui/react-icons";
+import { useRouter } from "next/navigation";
 
 export default function Footer() {
+  const router = useRouter();
   const navItems = [
-    { name: "Home", scrollId: "Carousel" },
-    { name: "Solutions", scrollId: "Why Choose Us" },
-    { name: "Services", scrollId: "Solutions we Offer" },
-    { name: "Contact", scrollId: "#" },
+    { name: "Home", scrollId: "Carousel", page: "/" },
+    { name: "Solutions", scrollId: "Why Choose Us", page: "/" },
+    { name: "Services", scrollId: "Solutions we Offer", page: "/" },
   ];
-  const handleScroll = (scrollId: string) => {
+  const handleScroll = async (scrollId: string, page: string) => {
+    if (page) await router.push(page);
     if (scrollId) {
       const element = document.getElementById(scrollId);
       if (element) {
-      const offset = 20;
-      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
-      const offsetPosition = elementPosition - offset;
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
+        const offset = 20;
+        const elementPosition =
+          element.getBoundingClientRect().top + window.pageYOffset;
+        const offsetPosition = elementPosition - offset;
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth",
+        });
       }
     }
   };
@@ -41,7 +44,7 @@ export default function Footer() {
               <div
                 key={item.name}
                 onClick={() => {
-                  handleScroll(item.scrollId);
+                  handleScroll(item.scrollId, item.page);
                 }}
                 className="py-1 rounded-md text-lg font-handyOblique relative group w-fit cursor-pointer"
               >

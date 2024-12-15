@@ -1,6 +1,7 @@
 "use client";
 import Card from "@/components/card";
 import CompaniesMarquee from "@/components/marquee";
+import TestimonialsCarousel from "@/components/testimonials";
 import Typography from "@/components/typography";
 import {
   Carousel,
@@ -274,23 +275,8 @@ export default function Component() {
           >
             Solutions we Offer
           </Typography>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-[5rem] pt-[1.5rem] sm:pt-[3rem]">
-            {workCard.map((card, idx) => (
-              <div className="relative" key={idx}>
-                <Card
-                  key={idx}
-                  variant="work"
-                  className="md:w-auto max-md:w-full bg-[#1c3f60] sm:p-8 xl:p-12 h-full"
-                  cardInfo={card}
-                  header={
-                    <Card.Header className="max-w-full whitespace-pre-line tracking-wide text-center mx-auto text-primary-foreground font-handyRegular" />
-                  }
-                  body={
-                    <Card.Body className="text-center font-handyOblique tracking-wide sm:text-[1.75rem] leading-[2rem] whitespace-pre-line text-primary-foreground mt-[2rem]" />
-                  }
-                />
-              </div>
-            ))}
+          <div className="pt-[1.5rem] sm:pt-[3rem]">
+            <TestimonialsCarousel cardInfo={workCard} />
           </div>
         </div>
       </div>

@@ -12,6 +12,7 @@ import { PlacesInput } from "@/components/placesInput";
 import { calculateTotalCost } from "@/lib/utils";
 import toast from "react-hot-toast";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const pageData = {
   title: "Book your Delivery with Forun",
@@ -42,6 +43,7 @@ export default function FormPage() {
   const pickupLocation = useWatch({ control, name: "pickup.landmark" });
   const dropoffLocation = useWatch({ control, name: "dropoff.landmark" });
   const [totalCost, setTotalCost] = useState<string | undefined>(undefined);
+  const router = useRouter();
   useEffect(() => {
     if (pickupLocation && dropoffLocation) {
       (async () => {
@@ -80,6 +82,7 @@ export default function FormPage() {
 
       if (response.ok) {
         toast.success("Delivery booked successfully");
+        router.replace(`/book-a-delivery/success/${responseData.orderId}`);
       } else {
         toast.error(responseData.message);
       }
@@ -92,53 +95,6 @@ export default function FormPage() {
   };
   return (
     <div className="w-full h-full">
-      <div className="max-w-full h-full  mx-auto bg-primary ">
-        <div className="flex mx-auto max-w-7xl flex-col-reverse gap-[2rem] md:flex-row md:gap-[8rem] h-full p-4 sm:p-6 lg:p-8 ">
-          <div className="flex items-center md:w-[50%]">
-            <div className="text-white w-full flex flex-col max-sm:items-center sm:gap-2">
-              <Image
-                src={hero.imageTop}
-                alt={hero.titleTop || "heroImage"}
-                width={120}
-                height={120}
-                className={hero.imageTopStyles}
-                objectFit="contain"
-                priority
-              />
-              {hero.titleTop && (
-                <Typography
-                  as={"h1"}
-                  className={`text-4xl font-bold my-4 font-handyRegular max-sm:text-center ${hero.titleTopStyle}`}
-                >
-                  {hero.titleTop}
-                </Typography>
-              )}
-              {hero.imageCenter && (
-                <Image
-                  src={hero.imageCenter}
-                  alt={hero.titleTop || "heroImage"}
-                  width={400}
-                  height={160}
-                  className="max-sm:max-w-[170px] max-w-[300px] my-2"
-                  objectFit="contain"
-                  priority
-                />
-              )}
-            </div>
-          </div>
-          <div className="flex justify-center items-center">
-            <Image
-              src={hero.image}
-              alt={hero.titleTop || "heroImage"}
-              width={hero.width}
-              height={hero.height}
-              className="sm:max-h-[300px] max-w-[300px] max-h-[250px] max-sm:w-auto"
-              objectFit="cover"
-              priority
-            />
-          </div>
-        </div>
-      </div>
       <div className="flex w-full gap-12 max-md:gap-6 max-w-7xl mx-auto  p-4 sm:p-6 lg:p-8 max-md:flex-col max-md:items-center max-md:justify-center">
         <div className="flex flex-col gap-6 justify-center md:w-[40%]">
           <Typography as={"h1"} className="font-handyRegular font-bold">
@@ -182,7 +138,7 @@ export default function FormPage() {
                 </label>
                 <Input
                   className={`w-full ${errors.pickup?.name && styles.error}`}
-                  placeholder="Enter name"
+                  placeholder="Abdul"
                   {...register("pickup.name")}
                 />
                 {errors.pickup?.name && (
@@ -200,7 +156,7 @@ export default function FormPage() {
                 </label>
                 <Input
                   className={`w-full ${errors.pickup?.phone_number && styles.error}`}
-                  placeholder="Enter phone number"
+                  placeholder="03165014215"
                   {...register("pickup.phone_number")}
                 />
                 {errors.pickup?.phone_number && (
@@ -218,9 +174,10 @@ export default function FormPage() {
                 </label>
                 <PlacesInput
                   className={`w-full ${errors.pickup?.landmark && styles.error}`}
-                  placeholder="Enter landmark"
+                  placeholder="Search nearest landmark"
                   onChange={(e) => {
                     formHook.setValue("pickup.landmark", e);
+                    formHook.clearErrors("pickup.landmark");
                   }}
                 />
 
@@ -239,7 +196,7 @@ export default function FormPage() {
                 </label>
                 <Input
                   className={`w-full ${errors.pickup?.address && styles.error}`}
-                  placeholder="Enter address"
+                  placeholder="St 4"
                   {...register("pickup.address")}
                 />
                 {errors.pickup?.address && (
@@ -267,7 +224,7 @@ export default function FormPage() {
                 </label>
                 <Input
                   className={`w-full ${errors.dropoff?.name && styles.error}`}
-                  placeholder="Enter name"
+                  placeholder="Asim"
                   {...register("dropoff.name")}
                 />
                 {errors.dropoff?.name && (
@@ -285,7 +242,7 @@ export default function FormPage() {
                 </label>
                 <Input
                   className={`w-full ${errors.dropoff?.phone_number && styles.error}`}
-                  placeholder="Enter phone number"
+                  placeholder="03343414252"
                   {...register("dropoff.phone_number")}
                 />
                 {errors.dropoff?.phone_number && (
@@ -303,9 +260,10 @@ export default function FormPage() {
                 </label>
                 <PlacesInput
                   className={`w-full ${errors.dropoff?.landmark && styles.error}`}
-                  placeholder="Enter landmark"
+                  placeholder="Search nearest landmark"
                   onChange={(e) => {
                     formHook.setValue("dropoff.landmark", e);
+                    formHook.clearErrors("dropoff.landmark");
                   }}
                 />
                 {errors.dropoff?.landmark && (
@@ -323,7 +281,7 @@ export default function FormPage() {
                 </label>
                 <Input
                   className={`w-full ${errors.dropoff?.address && styles.error}`}
-                  placeholder="Enter address"
+                  placeholder="St 7"
                   {...register("dropoff.address")}
                 />
                 {errors.dropoff?.address && (

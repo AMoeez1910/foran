@@ -28,14 +28,30 @@ export const calculateTotalCost = async ({
   dropoffLocation: GeoApiProps;
 }) => {
   try {
-      const responsePickUpDropOff = await fetch(
-        `https://api.geoapify.com/v1/routing?waypoints=${pickupLocation.lat},${pickupLocation.lon}|${dropoffLocation.lat},${dropoffLocation.lon}&mode=drive&apiKey=${process.env.NEXT_PUBLIC_GEO_API}`
-      );
-      const dataToUser = await responsePickUpDropOff.json();
-      const distanceToUser = dataToUser.features[0].properties.distance;
-      const price = (distanceToUser * 15) / 1000;
-      return price.toFixed(0);
+    const responsePickUpDropOff = await fetch(
+      `https://api.geoapify.com/v1/routing?waypoints=${pickupLocation.lat},${pickupLocation.lon}|${dropoffLocation.lat},${dropoffLocation.lon}&mode=drive&apiKey=${process.env.NEXT_PUBLIC_GEO_API}`
+    );
+    const dataToUser = await responsePickUpDropOff.json();
+    const distanceToUser = dataToUser.features[0].properties.distance;
+    const price = (distanceToUser * 15) / 1000;
+    return price.toFixed(0);
   } catch (error) {
     console.error("Error calculating driver times:", error);
+  }
+};
+
+export const scrolltoHash = function (element_id: string) {
+  let yOffset;
+
+  if (window.innerWidth < 1535) {
+    yOffset = -65;
+  } else {
+    yOffset = -105;
+  }
+
+  const element = document.getElementById(element_id);
+  if (element) {
+    const y = element.getBoundingClientRect().top + window.scrollY + yOffset;
+    window.scrollTo({ top: y, behavior: "smooth" });
   }
 };

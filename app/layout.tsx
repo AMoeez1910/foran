@@ -5,11 +5,10 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Toaster } from "react-hot-toast";
 
-
 const HandyCasualRegular = localFont({
   src: "./fonts/HandyCasualCondensed-Regular.ttf",
   variable: "--font-handy-casual-regular",
-  weight:"100 900",
+  weight: "100 900",
 });
 const HandyCasualOblique = localFont({
   src: "./fonts/HandyCasualCondensed-Oblique.ttf",
@@ -52,9 +51,7 @@ export default function RootLayout({
         className={`${HandyCasualRegular.variable} ${HandyCasualOblique.variable} antialiased`}
       >
         <Toaster position="bottom-right" reverseOrder={false} />
-        <Navbar />
         {children}
-        <Footer />
       </body>
     </html>
   );
